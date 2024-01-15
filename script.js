@@ -1,18 +1,58 @@
 "use strict";
 
-// 1) Создать переменную num со значением 266219 (тип данных число)
-let num = 266219;
+//Exercise 1
+console.log("Exercise 1");
 
-// 2) Вывести в консоль произведение (умножение) цифр этого числа
-let numArray = ("" + num).split("").map(Number);
-let numResult = 1;
+let lang = {
+  en: [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ],
+  ru: [
+    "Понедельник",
+    "Вторник",
+    "Среда",
+    "Четверг",
+    "Пятница",
+    "Суббота",
+    "Воскресенье",
+  ],
+};
 
-for (var i = 0; i < numArray.length; ++i) {
-  numResult *= numArray[i];
+let userInput = prompt("На каком языке выводить дни недели \nen или ru");
+
+// If method
+if (userInput == "en") {
+  console.log("Method if:" + lang.en);
+} else {
+  console.log("Method if:" + lang.ru);
 }
 
-// 3) Полученный результат возвести в степень 3, используя только 1 оператор (Math.pow не подходит)
-let numResultPow = numResult ** 3;
+// Switch method
+switch (userInput) {
+  case "en":
+    console.log("Method switch:" + lang.en);
+    break;
+  case "ru":
+    console.log("Method switch:" + lang.en);
+    break;
+  default:
+    console.log("Сорри, но выбери язык для вывода");
+}
 
-// 4) Вывести в консоль первые 2 цифры полученного числа
-console.log(String(numResultPow).slice(0, 2));
+//Multidimensional array method
+console.log("Method multidimensional array: " + lang[userInput]);
+
+//Exercise 2
+let namePerson = prompt("Ваше имя?");
+
+namePerson == "Артем"
+  ? console.log("Директор")
+  : namePerson == "Александр"
+  ? console.log("Преподаватель")
+  : console.log("Студент");
