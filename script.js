@@ -39,7 +39,7 @@ switch (userInput) {
     console.log("Method switch:" + lang.en);
     break;
   case "ru":
-    console.log("Method switch:" + lang.en);
+    console.log("Method switch:" + lang.ru);
     break;
   default:
     console.log("Сорри, но выбери язык для вывода");
