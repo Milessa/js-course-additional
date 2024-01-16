@@ -1,58 +1,37 @@
 "use strict";
 
-//Exercise 1
-console.log("Exercise 1");
+let userArg = prompt("Введите аргумент");
 
-let lang = {
-  en: [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
-  ],
-  ru: [
-    "Понедельник",
-    "Вторник",
-    "Среда",
-    "Четверг",
-    "Пятница",
-    "Суббота",
-    "Воскресенье",
-  ],
-};
+function check() {
+  if (userArg == null || userArg == "") {
+    console.log("В качестве аргумента передана не строка");
+  } else if (typeof userArg === "string") {
+    userArg = userArg.trim();
 
-let userInput = prompt("На каком языке выводить дни недели \nen или ru");
-
-// If method
-if (userInput == "en") {
-  console.log("Method if:" + lang.en);
-} else {
-  console.log("Method if:" + lang.ru);
+    if (userArg.length > 30) {
+      userArg = userArg.substring(0, 30) + "...";
+      console.log(userArg);
+    } else {
+      console.log(userArg);
+    }
+  }
 }
+check();
 
-// Switch method
-switch (userInput) {
-  case "en":
-    console.log("Method switch:" + lang.en);
-    break;
-  case "ru":
-    console.log("Method switch:" + lang.en);
-    break;
-  default:
-    console.log("Сорри, но выбери язык для вывода");
-}
-
-//Multidimensional array method
-console.log("Method multidimensional array: " + lang[userInput]);
-
-//Exercise 2
-let namePerson = prompt("Ваше имя?");
-
-namePerson == "Артем"
-  ? console.log("Директор")
-  : namePerson == "Александр"
-  ? console.log("Преподаватель")
-  : console.log("Студент");
+// switch (true) {
+//   case userArg == null:
+//   case userArg == "":
+//     console.log("В качестве аргумента передана не строка");
+//     break;
+//   case typeof userArg === "string" && userArg.length < 30:
+//     userArg = userArg.trim();
+//     console.log(userArg);
+//     break;
+//   case typeof userArg === "string" && userArg.length > 30:
+//     userArg = userArg.trim();
+//     userArg = userArg.substring(0, 30) + "...";
+//     console.log(userArg);
+//     break;
+//   default:
+//     console.log("Bravo2");
+// }
