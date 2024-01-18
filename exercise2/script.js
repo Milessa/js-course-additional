@@ -25,7 +25,7 @@ function isPrime(number) {
 function printPrimesWithDivisors(n) {
   for (let i = 2; i <= n; i++) {
     if (isPrime(i)) {
-      console.log("Делители этого числа: 1 и ${i}");
+      console.log(`Делители этого числа: 1 и ${i}`);
     }
   }
 }
