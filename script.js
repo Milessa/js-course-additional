@@ -1,19 +1,34 @@
 "use strict";
 
-let userArg = prompt("Введите аргумент");
+let week = [
+  "Понедельник",
+  "Вторник",
+  "Среда",
+  "Четверг",
+  "Пятница",
+  "Суббота",
+  "Воскресенье",
+];
 
-function check() {
-  if (userArg == null || userArg == "") {
-    console.log("В качестве аргумента передана не строка");
-  } else if (typeof userArg === "string") {
-    userArg = userArg.trim();
+//Текущий день
+let day = new Date();
+let WeekDay = day.getDay();
 
-    if (userArg.length > 30) {
-      userArg = userArg.substring(0, 30) + "...";
-      console.log(userArg);
-    } else {
-      console.log(userArg);
-    }
-  }
+if (WeekDay === 0) {
+  WeekDay = 6;
+} else {
+  WeekDay--;
 }
-check();
+
+//Выходные дни - курсивом
+week.forEach((day, i) => {
+  if (WeekDay === i) {
+    day = `<b>${day}</b>`;
+  } else {
+    `${day}`;
+  }
+  if (i === 5 || i === 6) {
+    day = `<i>${day}</i>`;
+  }
+  document.write(`<div>${day}</div>`);
+});
