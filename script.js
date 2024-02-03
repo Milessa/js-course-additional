@@ -64,7 +64,7 @@ const everySecond = () => {
   const currentDateB =
     addZero(day.getUTCDate()) +
     "." +
-    addZero(day.getUTCMonth()) +
+    addZero(day.getUTCMonth() + 1) +
     "." +
     day.getFullYear() +
     " - " +
