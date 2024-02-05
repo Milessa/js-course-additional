@@ -40,6 +40,7 @@ let render = function (key) {
     li.querySelector(".todo-remove").addEventListener("click", function () {
       todoData = todoData.filter(function (index) {
         li.remove(item);
+        return index !== item;
       });
       addToLocalStorage(todoData);
     });
