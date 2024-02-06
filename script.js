@@ -1,73 +1,82 @@
 "use script";
 
-const DomElement = function () {
-  this.height;
-  this.width;
-  this.bg;
-  this.fontSize;
-  this.selector;
-};
-
-DomElement.prototype.selector = function () {
-  let create = prompt(" . или # Назови свой элемент");
-  let resultDot = create[0] == "." ? create.substr(1) : create;
-  let resultSharp = create[0] == "#" ? create.substr(1) : create;
-
-  //div & class
-  if (create.startsWith(".") === true) {
-    this.selector = document.createElement("div");
-    this.selector.innerHTML = prompt("Текст внутри div");
-    document.body.appendChild(this.selector);
-    this.selector.classList.add(resultDot);
-  } else if (create.startsWith("#") === true) {
-    //paragraph & id
-    this.selector = document.createElement("p");
-    this.selector.innerHTML = prompt("Текст внутри параграф");
-    document.body.appendChild(this.selector);
-    this.selector.id = resultSharp;
-  } else {
-    alert(
-      "Чтобы магия случилась введенный текст должен начаться с точки (.) либо с решетки (#)"
-    );
-  }
-
-  let css = function () {
-    function isNumber(n) {
-      return !isNaN(parseFloat(n)) && isFinite(n);
-    }
-    do {
-      this.height = prompt("Высота элемента");
-    } while (!isNumber(this.height));
-
-    do {
-      this.width = prompt("Ширина элемента");
-    } while (!isNumber(this.width));
-
-    this.bg = prompt("Цвет фона\n(на английском или #Hex color)");
-
-    do {
-      this.fontSize = prompt("Размер текста");
-    } while (!isNumber(this.fontSize));
-    return (
-      "width: " +
-      this.width +
-      "px; " +
-      "height: " +
-      this.height +
-      "px; " +
-      "font-size: " +
-      this.fontSize +
-      "px; " +
-      "background: " +
-      this.bg +
-      "; "
-    );
+document.addEventListener("DOMContentLoaded", function () {
+  const DomElement = function () {
+    this.height;
+    this.width;
+    this.bg;
+    this.selector;
   };
-  let s = css();
-  this.selector.style.cssText = s;
-};
 
-const element = new DomElement();
-element.selector();
+  DomElement.prototype.selector = function () {
+    this.selector = document.createElement("div");
+    document.body.appendChild(this.selector);
+    this.selector.classList.add("square");
 
-console.log(element instanceof DomElement);
+    let css = function () {
+      function isNumber(n) {
+        return !isNaN(parseFloat(n)) && isFinite(n);
+      }
+      do {
+        this.height = prompt("Высота элемента");
+      } while (!isNumber(this.height));
+
+      do {
+        this.width = prompt("Ширина элемента");
+      } while (!isNumber(this.width));
+
+      this.bg = prompt("Цвет фона\n(на английском или #Hex color)");
+
+      return (
+        "position: absolute;" +
+        "top: 0;" +
+        "left: 0 ;" +
+        "width: " +
+        this.width +
+        "px; " +
+        "height: " +
+        this.height +
+        "px; " +
+        "font-size: " +
+        this.fontSize +
+        "px; " +
+        "background: " +
+        this.bg +
+        "; "
+      );
+    };
+    let s = css();
+    this.selector.style.cssText = s;
+    let modifier = 10;
+
+    window.addEventListener("keydown", (e) => {
+      switch (e.key) {
+        case "ArrowUp":
+          this.selector.style.top = `${
+            parseInt(this.selector.style.top) - modifier
+          }px`;
+          break;
+        case "ArrowDown":
+          this.selector.style.top = `${
+            parseInt(this.selector.style.top) + modifier
+          }px`;
+          break;
+        case "ArrowLeft":
+          this.selector.style.left = `${
+            parseInt(this.selector.style.left) - modifier
+          }px`;
+          break;
+        case "ArrowRight":
+          this.selector.style.left = `${
+            parseInt(this.selector.style.left) + modifier
+          }px`;
+          break;
+      }
+    });
+  };
+
+  const element = new DomElement();
+  element.selector();
+
+  console.log(element instanceof DomElement);
+});
